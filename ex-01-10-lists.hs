@@ -28,3 +28,8 @@ myReverse :: [a] -> [a]
 myReverse [] = []
 myReverse xs = foldl (\acc x -> x:acc) [] xs 
 
+--Ex 6
+myPalindrome :: Eq a => [a] -> Bool
+myPalindrome [] = True
+myPalindrome x = x == myReverse x
+
