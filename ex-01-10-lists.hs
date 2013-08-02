@@ -13,3 +13,12 @@ myButLast [x,_] = x
 myButLast (x:xs) = 
     myButLast xs
 
+--Ex 3
+--elementAt :: (Integral b) => [a] -> b -> a
+
+--Ex 4
+myLength :: (Integral b) => [a] -> b
+myLength [] = 0
+myLength (x:xs) = myLength xs + 1
+
+
