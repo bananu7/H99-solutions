@@ -54,3 +54,13 @@ pack list = let (left,right) = span (== head list) list in
 --Ex 10
 encode :: (Eq a) => [a] -> [(Int, a)]
 encode list = map (\x -> (length x, head x)) (pack list)
+
+--Ex 11
+data RleElem a c = Single a | Multiple c a deriving Show
+
+encode' :: (Eq a, Integral c) => [a] -> [RleElem a c]
+encode' list = map (\x -> case length x of 
+                         1 -> Single (head x)
+                         _ -> Multiple (fromIntegral $ length x) (head x))
+                   (pack list)
+
