@@ -48,5 +48,5 @@ compress (x:xs) = x : (compress $ dropWhile (== x) xs)
 --Ex 9
 pack :: Eq a => [a] -> [[a]]
 pack [] = []
-pack (x:xs) = let (left,right) = span (== x) xs in
-              [x:left] ++ pack right
+pack list = let (left,right) = span (== head list) list in
+            [left] ++ pack right
