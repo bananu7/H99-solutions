@@ -33,3 +33,10 @@ myPalindrome :: Eq a => [a] -> Bool
 myPalindrome [] = True
 myPalindrome x = x == myReverse x
 
+--Ex 7
+data NestedList a = Elem a | List [NestedList a]
+
+myFlatten :: NestedList a -> [a]
+myFlatten (Elem a) = [a]
+myFlatten (List []) = []
+myFlatten (List inner) = foldl (\acc x -> acc ++ (myFlatten x)) [] inner
