@@ -50,3 +50,7 @@ pack :: Eq a => [a] -> [[a]]
 pack [] = []
 pack list = let (left,right) = span (== head list) list in
             left : pack right
+
+--Ex 10
+encode :: (Eq a) => [a] -> [(Int, a)]
+encode list = map (\x -> (length x, head x)) (pack list)
