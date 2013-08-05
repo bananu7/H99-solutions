@@ -39,3 +39,8 @@ data NestedList a = Elem a | List [NestedList a]
 myFlatten :: NestedList a -> [a]
 myFlatten (Elem a) = [a]
 myFlatten (List inner) = foldl (\acc x -> acc ++ (myFlatten x)) [] inner
+
+--Ex 8
+compress :: Eq a => [a] -> [a]
+compress [] = []
+compress (x:xs) = x : (compress $ dropWhile (== x) xs)
