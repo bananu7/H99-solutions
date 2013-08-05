@@ -44,3 +44,9 @@ myFlatten (List inner) = foldl (\acc x -> acc ++ (myFlatten x)) [] inner
 compress :: Eq a => [a] -> [a]
 compress [] = []
 compress (x:xs) = x : (compress $ dropWhile (== x) xs)
+
+--Ex 9
+pack :: Eq a => [a] -> [[a]]
+pack [] = []
+pack (x:xs) = let (left,right) = span (== x) xs in
+              [x:left] ++ pack right
