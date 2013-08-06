@@ -96,3 +96,9 @@ repli :: Integral c => [a] -> c -> [a]
 repli [] _ = []
 repli (x:xs) c = (replicate (fromIntegral c) x) ++ (repli xs c)
 
+--Ex 16
+dropEvery :: Integral c => [a] -> c -> [a]
+-- I don't really like the foldr solution
+--dropEvery list n = foldr (\(x,c) acc -> if c `mod` n == 0 then acc 
+--                                                          else x:acc) [] (zip list [1..])
+dropEvery list n = map fst $ filter (\(x,c) -> c `mod` n /= 0) (zip list [1..])
