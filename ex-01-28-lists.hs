@@ -84,5 +84,5 @@ encodeInner (c,a) (h:t)
     | otherwise = (encodeElem c a) : encodeInner (1,h) t
 
 encodeDirect [] = []
-encodeDirect list@(h:t) = encodeInner (1, h) t
+encodeDirect (h:t) = encodeInner (1, h) t
 
