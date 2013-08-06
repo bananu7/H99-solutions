@@ -86,3 +86,8 @@ encodeInner (c,a) (h:t)
 encodeDirect [] = []
 encodeDirect (h:t) = encodeInner (1, h) t
 
+--Ex 14
+dupli :: [a] -> [a]
+dupli [] = []
+dupli (x:xs) = x:x:(dupli xs)
+
