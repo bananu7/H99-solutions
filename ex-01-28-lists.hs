@@ -70,3 +70,19 @@ decode list = foldr (\x acc -> case x of
                         Single elem -> elem:acc
                         Multiple count elem -> (replicate (fromIntegral count) elem) ++ acc) [] list
 
+--Ex 13
+encodeDirect :: (Integral c, Eq a) => [a] -> [RleElem c a]
+
+encodeElem :: Integral c => c -> a -> RleElem c a
+encodeElem c a = if c > 1 then (Multiple c a)
+                          else (Single a)
+
+encodeInner :: (Integral c, Eq a) => (c,a) -> [a] -> [RleElem c a]
+encodeInner (c,a) [] = [encodeElem c a]
+encodeInner (c,a) (h:t)
+    | a == h = encodeInner (c+1, a) t
+    | otherwise = (encodeElem c a) : encodeInner (1,h) t
+
+encodeDirect [] = []
+encodeDirect list@(h:t) = encodeInner (1, h) t
+
