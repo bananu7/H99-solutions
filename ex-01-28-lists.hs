@@ -1,6 +1,6 @@
 -- Solutions to H99 problems
 --
--- Exercises 1 to 10: Lists
+-- Exercises 1 to 28: Lists
 --Ex 1
 myLast :: [a] -> a
 myLast [x] = x
@@ -102,3 +102,13 @@ dropEvery :: Integral c => [a] -> c -> [a]
 --dropEvery list n = foldr (\(x,c) acc -> if c `mod` n == 0 then acc 
 --                                                          else x:acc) [] (zip list [1..])
 dropEvery list n = map fst $ filter (\(x,c) -> c `mod` n /= 0) (zip list [1..])
+
+--Ex 17
+split :: Integral c => [a] -> c -> ([a],[a])
+
+helper :: Integral c => [a] -> c -> [a] -> ([a],[a])
+helper front n back = if n == 0 then (front, back)
+                                else helper (front ++ [head back]) (n-1) (tail back)
+
+split list c = helper [] c list
+
