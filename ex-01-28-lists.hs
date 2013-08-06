@@ -91,3 +91,8 @@ dupli :: [a] -> [a]
 dupli [] = []
 dupli (x:xs) = x:x:(dupli xs)
 
+--Ex 15
+repli :: Integral c => [a] -> c -> [a]
+repli [] _ = []
+repli (x:xs) c = (replicate (fromIntegral c) x) ++ (repli xs c)
+
