@@ -116,4 +116,9 @@ split list c = helper [] c list
 slice :: Int -> Int -> ([a] -> [a])
 slice i k = take (k-i+1) . drop (i-1)
 
+--Ex 19
+rotate :: Int -> [a] -> [a]
+rotate c list@(x:xs) | c == 0 = list
+                     | c < 0 = rotate (length list + c) list 
+                     | c > 0 = rotate (c-1) (xs ++ [x])
 
