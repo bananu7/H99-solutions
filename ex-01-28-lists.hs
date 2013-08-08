@@ -112,3 +112,8 @@ helper front n back = if n == 0 then (front, back)
 
 split list c = helper [] c list
 
+--Ex 18
+slice :: Int -> Int -> ([a] -> [a])
+slice i k = take (k-i+1) . drop (i-1)
+
+
