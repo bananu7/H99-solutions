@@ -122,3 +122,8 @@ rotate c list@(x:xs) | c == 0 = list
                      | c < 0 = rotate (length list + c) list 
                      | c > 0 = rotate (c-1) (xs ++ [x])
 
+--Ex 20
+removeAt :: Int -> [a] -> (a, [a])
+removeAt c list = (head (drop (c-1) list), (take (c-1) list) ++ (drop c list))
+
+
