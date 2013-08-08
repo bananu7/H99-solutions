@@ -145,3 +145,11 @@ rndSelect c xs = foldl fun [] $ take c $ randomRs (1, length xs) (mkStdGen seed)
     where fun acc r = (elementAt xs r) : acc
           seed = 42
 
+-- exercise 23 variation with generator passing
+rndSelect' :: (RandomGen g) => Int -> [a] -> g -> ([a], g)
+rndSelect' 0 _ g = ([], g)
+rndSelect' n xs g = ((at i) : ys, g'')
+    where at = elementAt xs
+          (i, g') = randomR (1, length xs) g
+          (ys, g'') = rndSelect' (n-1) xs g'
+
