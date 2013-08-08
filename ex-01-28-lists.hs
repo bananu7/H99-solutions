@@ -126,4 +126,9 @@ rotate c list@(x:xs) | c == 0 = list
 removeAt :: Int -> [a] -> (a, [a])
 removeAt c list = (head (drop (c-1) list), (take (c-1) list) ++ (drop c list))
 
+--Ex 21
+insertAt :: Int -> a -> [a] -> [a]
+insertAt c e xs = f ++ e : s
+    where f = take (c-1) xs
+          s = drop (c-1) xs
 
