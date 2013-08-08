@@ -1,5 +1,7 @@
 -- Solutions to H99 problems
 --
+import System.Random
+--
 -- Exercises 1 to 28: Lists
 --Ex 1
 myLast :: [a] -> a
@@ -131,4 +133,15 @@ insertAt :: Int -> a -> [a] -> [a]
 insertAt c e xs = f ++ e : s
     where f = take (c-1) xs
           s = drop (c-1) xs
+
+--Ex 22
+range :: Int -> Int -> [Int]
+range a b = [x | x <- [a..b]]
+
+--Ex 23
+rndSelect :: Int -> [a] -> [a]
+rndSelect 0 _  = []
+rndSelect c xs = foldl fun [] $ take c $ randomRs (1, length xs) (mkStdGen seed)
+    where fun acc r = (elementAt xs r) : acc
+          seed = 42
 
